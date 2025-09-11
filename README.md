@@ -107,4 +107,15 @@ Create an image resize task
 
 **Swagger URL:** `http://localhost:8080/back/swagger-ui/index.html`
 
+# Steps to follow for execution within a container
+- Download the project.
+- Run Docker Compose with the following command.
+  - We specify our default path, as we won't have access to it inside the container. (This is necessary to receive the image once we use the @POST service.)
+    - export APP_STORAGE_PATH=/YOU_DESKTOP
+
+
+
+
+
+
 
