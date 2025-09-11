@@ -50,7 +50,7 @@ A technical test backend that receives an image, resizes it to requested dimensi
 
 ## API Endpoints
 
-Base path: `http://localhost:8080`
+Base path: `http://localhost:8080/back`
 
 ### `GET /task/all`
 Returns all image tasks.  
@@ -66,3 +66,31 @@ Returns all image tasks.
     "urlImage": "http://.../files/..."
   }
 ]
+```
+---
+
+### `GET /task/{taskId}`
+
+Returns a single task by its unique identifier.
+
+- **200 OK** → task found and returned as `ImageResponseDto`  
+- **404 Not Found** → task does not exist  
+- **500 Internal Server Error** → unexpected failure (with `DetailErrorDto` payload)  
+
+**Sample response (200)**:
+```json
+{
+  "id": "c4a2f320-8729-4ad9-8895-1f71a0c8e53f",
+  "createdAt": "2025-09-11T16:55:41",
+  "originalFile": "098f6bcd4621d373cade4e832627b4f6",
+  "resolution": "200x100",
+  "urlImage": "/repo-app/resized_test.png"
+}
+```
+---
+
+
+
+
+
+
