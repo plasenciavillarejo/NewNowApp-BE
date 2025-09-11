@@ -140,11 +140,27 @@ Create an image resize task
 ## 🚨 Troubleshooting
 
 413 Request Entity Too Large
-Increase multipart or codec limits in application.properties or application.yml.
+Increase multipart or codec limits in application.properties.
 
 400 Bad Request (multipart)
 Ensure Content-Type: multipart/form-data and that the file field is uploaded as File.
 
+### 📂 Project Structure
+src/main/java/com/now/app/be/main
+├── application.port.in
+├── application.port.out
+├── application.port.service.impl
+├── domain.exception
+├── domain.model
+├── infrastructure.persistence.adapter
+├── infrastructure.persistence.convert.mapper
+├── infrastructure.persistence.dao
+├── infrastructure.persistence.entity
+├── infrastructure.web.advice
+├── infrastructure.web.controller
+├── infrastructure.web.convert.mapper
+├── infrastructure.web.request.dto
+└── infrastructure.web.response.dto
 
 
 
