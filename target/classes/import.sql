@@ -1,0 +1,3 @@
+INSERT INTO images (id, created_at, original_file, resolution, url_image) VALUES ('550e8400-e29b-41d4-a716-446655440000', '2025-09-11 10:30:00', '55599062b4a2e49a6edffc34111cfb12', '800x600', 'http://localhost/images/photo1_800x600.png');
+INSERT INTO images (id, created_at, original_file, resolution, url_image)VALUES ('550e8400-e29b-41d4-a716-446655440001', '2025-09-11 11:00:00', '11199062b4a2e49a6ede77asdf9cfb12', '1920x1080', 'http://localhost/images/banner_1920x1080.jpg');
+INSERT INTO images (id, created_at, original_file, resolution, url_image)VALUES ('550e8400-e29b-41d4-a716-446655440002', '2025-09-11 12:15:00', '85799222b4a2e49a6edeaq123c779cf11z', '400x400', 'http://localhost/images/avatar_400x400.jpeg');
