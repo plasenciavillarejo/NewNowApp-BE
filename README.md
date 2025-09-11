@@ -17,7 +17,7 @@ A technical test backend that receives an image, resizes it to requested dimensi
 
 ## Design Decisions
 
-### Hexagonal Architecture (Ports & Adapters)
+### 🏗️ Hexagonal Architecture (Ports & Adapters)
 
 
 - **Domain**
@@ -105,6 +105,6 @@ Create an image resize task
 ```
 ---
 
-
+**Swagger URL:** `http://localhost:8080/back/swagger-ui/index.html`
 
 
