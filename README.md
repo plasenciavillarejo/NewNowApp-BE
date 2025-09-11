@@ -108,10 +108,26 @@ Create an image resize task
 **Swagger URL:** `http://localhost:8080/back/swagger-ui/index.html`
 
 # Steps to follow for execution within a container
-- Download the project.
-- Run Docker Compose with the following command.
-  - We specify our default path, as we won't have access to it inside the container. (This is necessary to receive the image once we use the @POST service.)
+- 1.- Download the project.
+- 2.- Run Docker Compose with the following command.
+  - 2.1.- We specify our default path, as we won't have access to it inside the container. (This is necessary to receive the image once we use the @POST service.)
     - export APP_STORAGE_PATH=/YOU_DESKTOP
+  - 2.2.- We run: docker compose up --build -d
+ 
+## Postman Services:
+
+**Execute in Localhost**
+- 1.- Get All Task: http://localhost:8080/back/task/all
+- 2.- Get Task by UUID: http://localhost:8080/back/task/{taskId}
+- 3.- Post Resize image: http://localhost:8080/back/task
+
+##Execute in VPS**
+- 1.- Get All Task: http://200.234.230.76:8080/back/task/all
+- 2.- Get Task by UUID: http://200.234.230.76:8080/back/task/{taskId}
+- 3.- Post Resize image: http://200.234.230.76:8080/back/task
+
+
+
 
 
 
