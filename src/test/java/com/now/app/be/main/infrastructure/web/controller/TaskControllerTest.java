@@ -1,7 +1,5 @@
 package com.now.app.be.main.infrastructure.web.controller;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,12 +11,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.now.app.be.main.application.port.in.ImageService;
 import com.now.app.be.main.domain.exception.NotFoundException;

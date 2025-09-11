@@ -1,0 +1,41 @@
+# Etapa 1: Build
+FROM openjdk:17.0.2-jdk-slim AS builder
+
+# Establecer directorio de trabajo
+WORKDIR /build
+
+# Copiar archivos esenciales de Maven para aprovechar la cache
+COPY pom.xml ./
+COPY .mvn ./.mvn
+COPY mvnw ./
+
+# Descargar dependencias (esto se cachea si el código no cambia)
+RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
+
+# Copiar el resto del proyecto al contenedor
+COPY src ./src
+
+# Construir la aplicación, saltando pruebas
+RUN ./mvnw clean package -DskipTests
+
+# Etapa 2: Runtime
+FROM openjdk:17.0.2-jdk-slim
+
+# Establecer directorio de trabajo
+WORKDIR /app
+
+# Instalar tzdata para la configuración de zona horaria
+RUN apt-get update && apt-get install -y --no-install-recommends tzdata && \
+    rm -rf /var/lib/apt/lists/*
+
+# Establecer la zona horaria
+ENV TZ=Europe/Madrid
+
+# Copiar el archivo JAR desde la etapa de build
+COPY --from=builder /build/target/*.jar NewNowAppBe-Main-0.0.1-SNAPSHOT.jar
+
+# Exponer el puerto del servicio
+EXPOSE 8080
+
+# Ejecutar la aplicación
+ENTRYPOINT ["java", "-jar", "NewNowAppBe-Main-0.0.1-SNAPSHOT.jar"]

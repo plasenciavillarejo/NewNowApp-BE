@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  newnowapp-be:
+    image: newnowapp-be:0.0.1
+    container_name: NewNowApp-BE
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ${APP_STORAGE_PATH:-./data}:/repo-app
+    environment:
+      - PROFILE_DOCKER=true

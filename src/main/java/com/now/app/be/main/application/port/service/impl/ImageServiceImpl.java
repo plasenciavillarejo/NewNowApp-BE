@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +31,9 @@ public class ImageServiceImpl implements ImageService {
 
   private final ImageRepositoryPort imageRepositoryPort;
 
+  @Value("${execute.container}")
+  private boolean isEnvironmentCloud;
+  
   private static final Logger LOGGER = LoggerFactory.getLogger(ImageServiceImpl.class);
 
   public ImageServiceImpl(ImageRepositoryPort imageRepositoryPort) {
@@ -55,8 +59,10 @@ public class ImageServiceImpl implements ImageService {
   @Override
   public Mono<byte[]> resizeImage(MultipartFile file, Integer width, Integer height) {
     return Mono.fromCallable(() -> {
-      Path outputPath = Paths.get(System.getProperty("user.home"), "Desktop",
-          "resized_copy_extra".concat(file.getOriginalFilename()));
+      Path outputPath = !isEnvironmentCloud
+          ? Paths.get(System.getProperty("user.home").concat("/Desktop"),
+              "resized_copy_extra".concat(file.getOriginalFilename()))
+          : Paths.get("/repo-app", "resized_copy_extra".concat(file.getOriginalFilename()));
 
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       Thumbnails.of(file.getInputStream()).size(width, height).toOutputStream(baos);
