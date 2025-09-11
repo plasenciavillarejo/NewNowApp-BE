@@ -89,7 +89,21 @@ Returns a single task by its unique identifier.
 ```
 ---
 
+### `POST /task`
 
+Create an image resize task
+
+- **200 OK** → Resized image successfully created. 
+- **400 Invalid request** → missing file or incorrect dimensions (unexpected failure (with `DetailErrorDto` payload)
+- **500 Internal Server Error** → unexpected failure (with `DetailErrorDto` payload)  
+
+**Sample response (200)**:
+```json
+{
+  Returns the resize image
+}
+```
+---
 
 
 
