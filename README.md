@@ -105,7 +105,12 @@ Create an image resize task
 ```
 ---
 
-**Swagger URL:** `http://localhost:8080/back/swagger-ui/index.html`
+📚 Tools & Consoles
+- Swagger UI → http://localhost:8080/back/swagger-ui/index.html
+- H2 Database Console → http://localhost:8080/back/h2-console
+  - User: test
+  - Password: test
+
 
 # Steps to follow for execution within a container
 - 1.- Download the project.
@@ -113,6 +118,13 @@ Create an image resize task
   - 2.1.- We specify our default path, as we won't have access to it inside the container. (This is necessary to receive the image once we use the @POST service.)
     - export APP_STORAGE_PATH=/YOU_DESKTOP
   - 2.2.- We run: docker compose up --build -d
+
+# Testing
+Unit tests → run with ./mvnw test
+Reactive flows → verified using reactor-test and StepVerifier
+Controllers → tested with WebTestClient and Mockito (ArgumentMatchers.any, eq, …)
+Important → do not mix Hamcrest matchers with Mockito matchers (avoid org.hamcrest.Matchers.any).
+
  
 ## Postman Services:
 
