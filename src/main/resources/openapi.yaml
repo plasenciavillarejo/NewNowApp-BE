@@ -57,17 +57,13 @@ paths:
               file:
                 contentType: image/png, image/jpeg, image/webp
       responses:
-        "201":
-          description: Task created
-          headers:
-            Location:
-              description: URL of the created resource (/task/{taskId})
-              schema:
-                type: string
+        "200":
+          description: Resized image successfully created
           content:
-            application/json:
+            image/*:
               schema:
-                $ref: "#/components/schemas/Task"
+                type: object
+                format: binary
         "400":
           description: Invalid request (missing file or incorrect dimensions)
           content:
@@ -163,5 +159,5 @@ components:
         message:
           type: string
         code:
-          type: int
+          type: integer
           nullable: true
