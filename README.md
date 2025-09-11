@@ -6,7 +6,7 @@ A technical test backend that receives an image, resizes it to requested dimensi
 
 ## Overview
 
-- **Language / Platform**: Java 17, Spring Boot  
+- **Language / Platform**: Java 17, Spring Boot 3.5.5
 - **Style**: Reactive controllers (`Mono<>`) with blocking work offloaded to `boundedElastic`  
 - **Architecture**: Hexagonal (Ports & Adapters)  
 - **Persistence**: H2 (dev), JPA adapter (blocking)  
@@ -19,3 +19,50 @@ A technical test backend that receives an image, resizes it to requested dimensi
 
 ### Hexagonal Architecture (Ports & Adapters)
 
+
+- **Domain**
+  - `domain.model` → core entities (e.g., `ImageModel`)
+  - `domain.exception` → exceptions (e.g., `NotFoundException`)
+
+- **Application (Ports)**
+  - `port.in` → inbound ports (use-cases consumed by web/adapters)
+  - `port.out` → outbound ports (e.g., `ImageRepositoryPort`)
+  - `service.impl` → implements business logic; wraps blocking ops in `boundedElastic`
+
+- **Infrastructure (Adapters)**
+  - **Web adapter**
+    - `web.controller` → REST controllers (e.g., `TaskController`)
+    - `web.request.dto` / `web.response.dto` → request/response DTOs
+    - `web.convert.mapper` → MapStruct DTO mappers
+    - `web.advice` → exception handling (`DetailErrorDto`)
+  - **Persistence adapter**
+    - `persistence.adapter` → implements `ImageRepositoryPort`
+    - `persistence.dao` → Spring Data repositories
+    - `persistence.entity` → DB entities
+    - `persistence.convert.mapper` → MapStruct entity mappers
+
+**Why hexagonal?**
+- Clear boundaries, easy to test
+- Replaceable adapters (JPA → R2DBC → S3, etc.)
+- Web controllers stay thin and focus on mapping
+
+---
+
+## API Endpoints
+
+Base path: `http://localhost:8080`
+
+### `GET /task/all`
+Returns all image tasks.  
+
+**Response (200)**:
+```json
+[
+  {
+    "id": "f2c9d1e3-....",
+    "createdAt": "2025-09-11T12:34:56",
+    "originalFile": "098f6bcd4621d373cade4e832627b4f6",
+    "resolution": "800x600",
+    "urlImage": "http://.../files/..."
+  }
+]
