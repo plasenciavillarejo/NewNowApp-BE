@@ -120,25 +120,30 @@ Create an image resize task
   - 2.2.- We run: docker compose up --build -d
 
 # Testing
-Unit tests → run with ./mvnw test
-Reactive flows → verified using reactor-test and StepVerifier
-Controllers → tested with WebTestClient and Mockito (ArgumentMatchers.any, eq, …)
-Important → do not mix Hamcrest matchers with Mockito matchers (avoid org.hamcrest.Matchers.any).
+- Unit tests → run with ./mvnw test
+- Reactive flows → verified using reactor-test and StepVerifier
+- Controllers → tested with WebTestClient and Mockito (ArgumentMatchers.any, eq, …)
 
  
-## Postman Services:
+## 📦 Postman collectinons:
 
 **Execute in Localhost**
 - 1.- Get All Task: http://localhost:8080/back/task/all
 - 2.- Get Task by UUID: http://localhost:8080/back/task/{taskId}
 - 3.- Post Resize image: http://localhost:8080/back/task
 
-##Execute in VPS**
+**Execute in VPS**
 - 1.- Get All Task: http://200.234.230.76:8080/back/task/all
 - 2.- Get Task by UUID: http://200.234.230.76:8080/back/task/{taskId}
 - 3.- Post Resize image: http://200.234.230.76:8080/back/task
 
+## 🚨 Troubleshooting
 
+413 Request Entity Too Large
+Increase multipart or codec limits in application.properties or application.yml.
+
+400 Bad Request (multipart)
+Ensure Content-Type: multipart/form-data and that the file field is uploaded as File.
 
 
 
