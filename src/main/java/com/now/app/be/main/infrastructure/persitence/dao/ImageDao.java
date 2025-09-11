@@ -1,9 +1,5 @@
 package com.now.app.be.main.infrastructure.persitence.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.now.app.be.main.infrastructure.persitence.entity.ImageEntity;
-
-public interface ImageDao extends JpaRepository<ImageEntity, Long> {
+public interface ImageDao {
 
 }

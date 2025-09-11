@@ -7,5 +7,5 @@ import com.now.app.be.main.application.port.out.ImageRepositoryPort;
 @Service
 public class ImageRepositoryAdapter implements ImageRepositoryPort {
 
-  s
+  
 }
