@@ -167,7 +167,7 @@ src/main/java/com/now/app/be/main
 └── infrastructure.web.response.dto
 
 
-
+### This project demonstrates an API-first, hexagonal architecture approach: the REST contract is central, implementation details are adapters that can evolve without breaking consumers.
 
 
 
