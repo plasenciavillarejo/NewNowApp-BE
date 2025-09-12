@@ -15,6 +15,10 @@ A technical test backend that receives an image, resizes it to requested dimensi
 
 ---
 
+## API-First Approach
+- The REST contract (endpoints, inputs/outputs, validation) is defined first.
+- DTOs and OpenAPI specification act as the source of truth.
+- Implementation details are adapters that can evolve without breaking consumers.
 
 ## 📂 Project Structure:
 <pre>
@@ -112,19 +116,16 @@ Returns a single task by its unique identifier.
 
 ### `POST /task`
 
-Create an image resize task
+Creates an image resize task.
 
-- **200 OK** → Resized image successfully created. 
-- **400 Invalid request** → missing file or incorrect dimensions (unexpected failure (with `DetailErrorDto` payload)
+- **200 OK** → returns the resized image as binary (`image/png`, `image/jpeg`, …)  
+- **400 Invalid request** → missing file or incorrect dimensions (with `DetailErrorDto` payload)  
 - **500 Internal Server Error** → unexpected failure (with `DetailErrorDto` payload)  
 
-**Sample response (200)**:
-```json
-{
-  Returns the resize image
-}
+**Response (200):**
+```text
+<binary image bytes>
 ```
----
 
 ### 📚 Tools & Consoles
 **Execute in Localhost**
@@ -153,7 +154,7 @@ Create an image resize task
 - Controllers → tested with WebTestClient and Mockito (ArgumentMatchers.any, eq, …)
 
  
-## 📦 Postman collectinons:
+## 📦 Postman collections:
 
 **Execute in Localhost**
 - 1.- Get All Task: http://localhost:8080/back/task/all
