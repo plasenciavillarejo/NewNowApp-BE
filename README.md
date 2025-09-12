@@ -135,10 +135,8 @@ Creates an image resize task.
   - Password: test
   - 
 **Execute in VPS**
-- Swagger UI → http://200.234.230.76:8080/back/swagger-ui/index.html
-- H2 Database Console → http://200.234.230.76:8080/back/h2-console
-  - User: test
-  - Password: test
+- Swagger UI → https://www.sportbuddies.es/test/inditex/swagger-ui/index.html#/task-controller/resizeImage
+- H2 Database Console → **Access not allowed**
 
 
 # Steps to follow for execution within a container
