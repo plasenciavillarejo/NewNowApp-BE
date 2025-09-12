@@ -135,8 +135,8 @@ Creates an image resize task.
   - Password: test
   - 
 **Execute in VPS**
-- Swagger UI → http://localhost:7070/back/swagger-ui/index.html
-- H2 Database Console → http://localhost:7070/back/h2-console
+- Swagger UI → http://200.234.230.76:8080/back/swagger-ui/index.html
+- H2 Database Console → http://200.234.230.76:8080/back/h2-console
   - User: test
   - Password: test
 
@@ -157,14 +157,14 @@ Creates an image resize task.
 ## 📦 Postman collections:
 
 **Execute in Localhost**
-- 1.- Get All Task: http://localhost:8080/back/task/all
-- 2.- Get Task by UUID: http://localhost:8080/back/task/{taskId}
-- 3.- Post Resize image: http://localhost:8080/back/task
+- 1.- *Get All Task:* http://localhost:8080/back/task/all
+- 2.- *Get Task by UUID:* http://localhost:8080/back/task/{taskId}
+- 3.- *Post Resize image:* http://localhost:8080/back/task
 
 **Execute in VPS**
-- 1.- Get All Task: http://200.234.230.76:7070/back/task/all
-- 2.- Get Task by UUID: http://200.234.230.76:7070/back/task/{taskId}
-- 3.- Post Resize image: http://200.234.230.76:7070/back/task
+- 1.- *Get All Task:* https://www.sportbuddies.es/test/inditex/task/all
+- 2.- *Get Task by UUID:* https://www.sportbuddies.es/test/inditex/task/{taskId}
+- 3.- *Post Resize image:* https://www.sportbuddies.es/test/inditex/task/
 
 ## 🚨 Troubleshooting
 
