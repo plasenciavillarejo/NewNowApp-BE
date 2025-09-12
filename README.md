@@ -164,7 +164,7 @@ Creates an image resize task.
 **Execute in VPS**
 - 1.- *Get All Task:* https://www.sportbuddies.es/test/inditex/task/all
 - 2.- *Get Task by UUID:* https://www.sportbuddies.es/test/inditex/task/{taskId}
-- 3.- *Post Resize image:* https://www.sportbuddies.es/test/inditex/task/
+- 3.- *Post Resize image:* https://www.sportbuddies.es/test/inditex/task
 
 ## 🚨 Troubleshooting
 
