@@ -149,8 +149,11 @@ Ensure Content-Type: multipart/form-data and that the file field is uploaded as 
 
 src/main/java/com/now/app/be/main
 ├── application.port.in
+
 ├── application.port.out
+
 ├── application.port.service.impl
+
 ├── domain.exception
 ├── domain.model
 ├── infrastructure.persistence.adapter
