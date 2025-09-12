@@ -134,7 +134,7 @@ Creates an image resize task.
   - User: test
   - Password: test
 **Execute in VPS**
-- Swagger UI → https://www.sportbuddies.es/test/inditex/swagger-ui/index.html#/task-controller/resizeImage
+- Swagger UI → https://www.sportbuddies.es/test/inditex/swagger-ui/index.html
 - H2 Database Console → **Access not allowed**
 
 
