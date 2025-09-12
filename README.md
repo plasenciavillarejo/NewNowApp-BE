@@ -147,24 +147,7 @@ Ensure Content-Type: multipart/form-data and that the file field is uploaded as 
 
 ## 📂 Project Structure:
 
-src/main/java/com/now/app/be/main
-├── application.port.in
-
-├── application.port.out
-
-├── application.port.service.impl
-
-├── domain.exception
-├── domain.model
-├── infrastructure.persistence.adapter
-├── infrastructure.persistence.convert.mapper
-├── infrastructure.persistence.dao
-├── infrastructure.persistence.entity
-├── infrastructure.web.advice
-├── infrastructure.web.controller
-├── infrastructure.web.convert.mapper
-├── infrastructure.web.request.dto
-└── infrastructure.web.response.dto
+<pre> ```text src/main/java/com/now/app/be/main ├── application │ ├── port │ │ ├── in │ │ ├── out │ │ └── service │ │ └── impl ├── domain │ ├── exception │ └── model ├── infrastructure │ ├── persistence │ │ ├── adapter │ │ ├── convert │ │ │ └── mapper │ │ ├── dao │ │ └── entity │ └── web │ ├── advice │ ├── controller │ ├── convert │ │ └── mapper │ ├── request │ │ └── dto │ └── response │ └── dto ``` </pre>
 
 
 ### This project demonstrates an API-first, hexagonal architecture approach: the REST contract is central, implementation details are adapters that can evolve without breaking consumers.
