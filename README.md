@@ -15,10 +15,31 @@ A technical test backend that receives an image, resizes it to requested dimensi
 
 ---
 
+
+## 📂 Project Structure:
+<pre>
+src/main/java/com/now/app/be/main
+├── application.port.in
+├── application.port.out
+├── application.port.service.impl
+├── domain.exception
+├── domain.model
+├── infrastructure.persistence.adapter
+├── infrastructure.persistence.convert.mapper
+├── infrastructure.persistence.dao
+├── infrastructure.persistence.entity
+├── infrastructure.serialization
+├── infrastructure.web.advice
+├── infrastructure.web.controller
+├── infrastructure.web.convert.mapper
+├── infrastructure.web.request.dto
+└── infrastructure.web.response.dto
+</pre>
+
+
 ## Design Decisions
 
 ### 🏗️ Hexagonal Architecture (Ports & Adapters)
-
 
 - **Domain**
   - `domain.model` → core entities (e.g., `ImageModel`)
@@ -35,7 +56,7 @@ A technical test backend that receives an image, resizes it to requested dimensi
     - `web.request.dto` / `web.response.dto` → request/response DTOs
     - `web.convert.mapper` → MapStruct DTO mappers
     - `web.advice` → exception handling (`DetailErrorDto`)
-  - **Persistence adapter**
+- **Persistence adapter**
     - `persistence.adapter` → implements `ImageRepositoryPort`
     - `persistence.dao` → Spring Data repositories
     - `persistence.entity` → DB entities
@@ -145,24 +166,6 @@ Increase multipart or codec limits in application.properties.
 400 Bad Request (multipart)
 Ensure Content-Type: multipart/form-data and that the file field is uploaded as File.
 
-## 📂 Project Structure:
-<pre>
-src/main/java/com/now/app/be/main
-├── application.port.in
-├── application.port.out
-├── application.port.service.impl
-├── domain.exception
-├── domain.model
-├── infrastructure.persistence.adapter
-├── infrastructure.persistence.convert.mapper
-├── infrastructure.persistence.dao
-├── infrastructure.persistence.entity
-├── infrastructure.web.advice
-├── infrastructure.web.controller
-├── infrastructure.web.convert.mapper
-├── infrastructure.web.request.dto
-└── infrastructure.web.response.dto
-</pre>
 
 
 ### This project demonstrates an API-first, hexagonal architecture approach: the REST contract is central, implementation details are adapters that can evolve without breaking consumers.
