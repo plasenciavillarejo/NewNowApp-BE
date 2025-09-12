@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - "7070:7070"
+      - "8080:8080"
     volumes:
       - ${APP_STORAGE_PATH:-./data}:/repo-app
     environment:
