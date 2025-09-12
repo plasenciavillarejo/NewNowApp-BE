@@ -175,15 +175,16 @@ Ensure Content-Type: multipart/form-data and that the file field is uploaded as 
 
 ### This project demonstrates an API-first, hexagonal architecture approach: the REST contract is central, implementation details are adapters that can evolve without breaking consumers.
 
+
 ## 🌐 Reverse proxy (NGINX) in production
 
-The API is also exposed through a reverse proxy so it can be consumed via the domain name instead of the server IP.
+The API is exposed through a reverse proxy so it can be consumed via the domain instead of the server IP.
 
-Goals
+**Goals**
+- Public base URL: `https://www.sportbuddies.es/test/inditex/`
+- Upstream service (internal): `http://<HOST_IP>:<PORT>/back/…`
+- Preserve HTTPS and original host via proxy headers
+- Ensure Swagger UI and OpenAPI work correctly behind the proxy
 
-- Public base URL: https://www.sportbuddies.es/test/inditex/…
-- Upstream Spring Boot service: http://IP_HOST:PORT/back/…
-- Preserve HTTPS scheme and original host through proxy headers
-- Make Swagger UI and OpenAPI work correctly behind the proxy
-
+This setup lets consumers use a stable, HTTPS-enabled domain while requests are transparently routed to the backend. Use the domain URLs in Postman or any client.
 
