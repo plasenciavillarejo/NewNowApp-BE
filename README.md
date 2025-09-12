@@ -126,9 +126,16 @@ Create an image resize task
 ```
 ---
 
-📚 Tools & Consoles
+### 📚 Tools & Consoles
+**Execute in Localhost**
 - Swagger UI → http://localhost:8080/back/swagger-ui/index.html
 - H2 Database Console → http://localhost:8080/back/h2-console
+  - User: test
+  - Password: test
+  - 
+**Execute in VPS**
+- Swagger UI → http://localhost:7070/back/swagger-ui/index.html
+- H2 Database Console → http://localhost:7070/back/h2-console
   - User: test
   - Password: test
 
@@ -154,9 +161,9 @@ Create an image resize task
 - 3.- Post Resize image: http://localhost:8080/back/task
 
 **Execute in VPS**
-- 1.- Get All Task: http://200.234.230.76:8080/back/task/all
-- 2.- Get Task by UUID: http://200.234.230.76:8080/back/task/{taskId}
-- 3.- Post Resize image: http://200.234.230.76:8080/back/task
+- 1.- Get All Task: http://200.234.230.76:7070/back/task/all
+- 2.- Get Task by UUID: http://200.234.230.76:7070/back/task/{taskId}
+- 3.- Post Resize image: http://200.234.230.76:7070/back/task
 
 ## 🚨 Troubleshooting
 
