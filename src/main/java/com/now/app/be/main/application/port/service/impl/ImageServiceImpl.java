@@ -81,9 +81,17 @@ public class ImageServiceImpl implements ImageService {
 
   private void saveImageResize(MultipartFile file, String imageEnd, Integer width, Integer height,
       String nameFileMdFive) throws IOException {
-    imageRepositoryPort.save(ImageModel.builder().urlImage(imageEnd).createdAt(LocalDateTime.now())
-        .originalFile(nameFileMdFive).resolution(String.valueOf(width) + "x" + String.valueOf(height))
-        .urlImage(imageEnd.concat(".").concat(FilenameUtils.getExtension(file.getOriginalFilename()))).build());
+    
+    ImageModel imageModel = imageRepositoryPort.findByOriginalFile(nameFileMdFive); 
+    
+    if (imageModel != null) {
+      imageModel.setCreatedAt(LocalDateTime.now());
+      imageRepositoryPort.save(imageModel);
+    } else {
+      imageRepositoryPort.save(ImageModel.builder().urlImage(imageEnd).createdAt(LocalDateTime.now())
+          .originalFile(nameFileMdFive).resolution(String.valueOf(width) + "x" + String.valueOf(height))
+          .urlImage(imageEnd.concat(".").concat(FilenameUtils.getExtension(file.getOriginalFilename()))).build());
+    }
   }
 
   private String md5OfFile(MultipartFile file) throws IOException {

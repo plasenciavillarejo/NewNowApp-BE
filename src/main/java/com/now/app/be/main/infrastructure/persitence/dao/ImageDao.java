@@ -8,4 +8,6 @@ import com.now.app.be.main.infrastructure.persitence.entity.ImageEntity;
 
 public interface ImageDao extends JpaRepository<ImageEntity, UUID> {
 
+  public ImageEntity findByOriginalFile(String nameOriginal);
+  
 }

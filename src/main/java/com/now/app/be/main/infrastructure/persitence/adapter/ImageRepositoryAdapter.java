@@ -38,4 +38,10 @@ public class ImageRepositoryAdapter implements ImageRepositoryPort {
     imageDao.save(ImageConvertMapper.mapper.convertModelToEntity(imageModel));
   }
 
+  @Override
+  @Transactional(readOnly = true)
+  public ImageModel findByOriginalFile(String nameOriginal) {
+    return ImageConvertMapper.mapper.convertEntityToModel(imageDao.findByOriginalFile(nameOriginal));
+  }
+
 }

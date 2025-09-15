@@ -13,4 +13,6 @@ public interface ImageRepositoryPort {
   
   public void save(ImageModel imageModel);
   
+  public ImageModel findByOriginalFile(String nameOriginal);
+  
 }
