@@ -131,8 +131,10 @@ Creates an image resize task.
 **Execute in Localhost**
 - Swagger UI → http://localhost:8080/back/swagger-ui/index.html
 - H2 Database Console → http://localhost:8080/back/h2-console
+  - Datasource Url: jdbc:h2:mem:nowappdb
   - User: test
   - Password: test
+  
 **Execute in VPS**
 - Swagger UI → https://www.sportbuddies.es/test/inditex/swagger-ui/index.html
 - H2 Database Console → **Access not allowed**
