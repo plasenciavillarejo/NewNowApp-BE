@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -59,16 +60,17 @@ public class ImageServiceImpl implements ImageService {
   @Override
   public Mono<byte[]> resizeImage(MultipartFile file, Integer width, Integer height) {
     return Mono.fromCallable(() -> {
+      String nameFileMdFive = md5OfFile(file);
+      
       Path outputPath = !isEnvironmentCloud
-          ? Paths.get(System.getProperty("user.home").concat("/Desktop"),
-              "resized_copy_extra".concat(file.getOriginalFilename()))
-          : Paths.get("/repo-app", "resized_copy_extra".concat(file.getOriginalFilename()));
+          ? Paths.get(System.getProperty("user.home").concat("/Desktop"), nameFileMdFive)
+          : Paths.get("/repo-app", nameFileMdFive);
 
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       Thumbnails.of(file.getInputStream()).size(width, height).toOutputStream(baos);
       
       LOGGER.info("The representation of the new image is now stored");
-      saveImageResize(file, outputPath.toString(), width, height);
+      saveImageResize(file, outputPath.toString(), width, height, nameFileMdFive);
       LOGGER.info("Image saved successfully");
 
       saveImageNewInPc(outputPath, baos, file);
@@ -77,12 +79,13 @@ public class ImageServiceImpl implements ImageService {
     }).subscribeOn(Schedulers.boundedElastic());
   }
 
-  private void saveImageResize(MultipartFile file, String imageEnd, Integer width, Integer height) throws IOException {
-    imageRepositoryPort
-        .save(ImageModel.builder().urlImage(imageEnd).createdAt(LocalDateTime.now()).originalFile(md5OfFile(file))
-            .resolution(width.toString() + "x" + height.toString()).urlImage(imageEnd).build());
+  private void saveImageResize(MultipartFile file, String imageEnd, Integer width, Integer height,
+      String nameFileMdFive) throws IOException {
+    imageRepositoryPort.save(ImageModel.builder().urlImage(imageEnd).createdAt(LocalDateTime.now())
+        .originalFile(nameFileMdFive).resolution(String.valueOf(width) + "x" + String.valueOf(height))
+        .urlImage(imageEnd.concat(".").concat(FilenameUtils.getExtension(file.getOriginalFilename()))).build());
   }
-  
+
   private String md5OfFile(MultipartFile file) throws IOException {
     try (InputStream is = file.getInputStream()) {
       return DigestUtils.md5DigestAsHex(is);
